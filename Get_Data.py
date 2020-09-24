@@ -25,8 +25,8 @@ klines.columns = ["open_time", "Open", "High",
                   "N_trades", "Taker_buy_base_asset_volume",
                   "taker_buy_quote_asset_volume", "ignore"]
 
-#klines['open_time'] = pd.to_datetime(klines['open_time'], unit='ms')
-#klines['close_time'] = pd.to_datetime(klines['close_time'], unit='ms')
+klines['open_time'] = pd.to_datetime(klines['open_time'], unit='ms')
+klines['close_time'] = pd.to_datetime(klines['close_time'], unit='ms')
 
 # Export
 klines.to_csv("klines.csv", sep=",")
