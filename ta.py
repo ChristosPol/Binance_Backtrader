@@ -1,6 +1,8 @@
 import pandas as pd
 import datetime
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
 pd.set_option('display.max_column',None)
 pd.set_option('display.max_rows',None)
 
@@ -18,7 +20,7 @@ data['middle_band'] = data['Close'].rolling(window=20).mean()
 data['upper_band'] = data['Close'].rolling(window=20).mean() + data['Close'].rolling(window=20).std()*2
 data['lower_band'] = data['Close'].rolling(window=20).mean() - data['Close'].rolling(window=20).std()*2
 
-
+'''
 plt.figure(figsize=(10,10))
 plt.plot(data['Close'], label ="Close")
 plt.plot(data['SMA1'], 'g--', label="SMA1")
@@ -28,3 +30,13 @@ plt.plot(data['middle_band'], 'r--', label="middle")
 plt.plot(data['lower_band'], 'y--', label="lower")
 plt.legend()
 plt.show()
+'''
+
+
+fig = go.Figure(data=[go.Candlestick(x=data['close_time'],
+                open=data['Open'], high=data['High'],
+                low=data['Low'], close=data['Close'])
+                     ])
+
+fig.update_layout(xaxis_rangeslider_visible=False)
+fig.show()
