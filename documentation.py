@@ -1,3 +1,4 @@
+'''
 from binance.client import Client
 import pandas as pd
 from get_api_keys import *
@@ -8,7 +9,7 @@ client = Client(api_key, api_secret)
 info = client.get_account()
 print(info['balances'])
 
-'''
+
 # Get server time in epoch
 client.get_server_time()
 
